@@ -125,4 +125,18 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+
+    /**
+     * Action Say
+     *
+     * @return string
+     */
+
+     public function actionSay($message = 'Hello My Blues Brother!')
+     {
+        # code...
+        return $this->render('say', [ 'message' => $message ] );
+     }
+    
 }
