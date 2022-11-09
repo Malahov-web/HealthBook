@@ -23,6 +23,7 @@ class CountryController  extends Controller
         // $countries = Country::find()->orderBy('name')->all();  
         
         $query = Country::find();
+        
 
         $pagination = new Pagination([
             'defaultPageSize' => 5,
