@@ -167,3 +167,166 @@ return [
 //   1
 
 // );
+
+
+// INSERT INTO `blood_count_groups` (`title`, `description`)
+// VALUES (
+//   'Общеклинические Исследования Крови',
+//   ' ' 
+// );
+
+
+// INSERT INTO `blood_count_groups` (`title`, `description`)
+// VALUES (
+//   'Биохимические Исследования Крови',
+//   ' ' 
+// );
+
+
+// INSERT INTO `blood_count_groups` (`title`, `description`)
+// VALUES (
+//   'Витамины',
+//   ' ' 
+// );
+
+
+// INSERT INTO `blood_count_groups` (`title`, `description`)
+// VALUES (
+//   'Гормональные Исследования Крови',
+//   ' ' 
+// );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TEMPALTE  blood_test_research
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'Витамины',
+//   'asd', 
+//   'asd', 
+//   1234, 
+//   7890, 
+// );
+
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'hemoglobin',
+//   'Гемоглобин', 
+//   'г/л', 
+//   132, 
+//   173, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'erythrocytes',
+//   'Эритроциты', 
+//   'x10*12/л', 
+//   4.3, 
+//   5.7, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'hematocrit',
+//   'Гематокрит', 
+//   '%', 
+//   39, 
+//   49, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'MCV',
+//   'Средний объем эритроцитов (MCV)', 
+//   'фл', 
+//   80, 
+//   100, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'МСН',
+//   'Среднее содержание Hb в эритроците (МСН)', 
+//   'пг', 
+//   27, 
+//   34, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'MCHC',
+//   'Средняя концентрация Hb в эритроцитах (МСНС)', 
+//   'г/л', 
+//   300, 
+//   380, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'color_indicator',
+//   'Цветовой показатель', 
+//   '', 
+//   0.85, 
+//   1.00, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'platelets',
+//   'Тромбоциты', 
+//   'x10*9/л', 
+//   180, 
+//   320, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'leukocytes',
+//   'Лейкоциты', 
+//   'x10*9/л', 
+//   4.5, 
+//   11.3, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'granulocytes_immature',
+//   'Незрелые гранулоциты', 
+//   '10*9/л', 
+//   0, 
+//   0.09, 
+// );
+
+
+// INSERT INTO `blood_test_research` ( `name`, `title`, `unit`, `normal_values_min`, `normal_values_max` )
+// VALUES (
+//   'neutrophils',
+//   'Нейтрофилы сегментоядерные', 
+//   'x10*9/л', 
+//   1.60, 
+//   7.90, 
+// );
+

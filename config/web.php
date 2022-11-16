@@ -53,7 +53,14 @@ $config = [
         */
     ],
     'params' => $params,
+    // 'params' => [
+    //     'thumbnail.size' => [128, 128], 
+    // ],
     'language' => 'ru-RU', // <- здесь!
+    // 'on beforeRequest' => function ($event) {
+    //     // ...
+    //     echo ('Hi this is beforeRequest event!');
+    // }  
 ];
 
 if (YII_ENV_DEV) {
