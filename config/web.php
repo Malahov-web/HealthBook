@@ -56,6 +56,9 @@ $config = [
             ],
         ],
         'db' => $db,
+
+        // URL Manager
+
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -65,13 +68,16 @@ $config = [
         ],
         */
 
+        // URL Manager for REST API
         'urlManager' => [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
                 // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'courses-types'],
+                // ['class' => 'yii\rest\UrlRule', 'controller' => 'courses-types'],
+                // ['class' => 'yii\rest\UrlRule', 'controller' => 'courses'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['courses', 'courses-types' ]  ],
             ],
         ]
 
