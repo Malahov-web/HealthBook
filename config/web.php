@@ -12,10 +12,23 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        // 'request' => [
+        //     // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+        //     'cookieValidationKey' => 'arJpdfMzj1hlTFsPXIE1_lkDvUWCJ8YN',
+
+        //     'parsers' => [
+        //         'application/json' => 'yii\web\JsonParser',
+        //     ]
+
+        // ],
+
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'arJpdfMzj1hlTFsPXIE1_lkDvUWCJ8YN',
-        ],
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
+        ],    
+        
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -51,6 +64,17 @@ $config = [
             ],
         ],
         */
+
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+            'showScriptName' => false,
+            'rules' => [
+                // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'courses-types'],
+            ],
+        ]
+
     ],
     'params' => $params,
     // 'params' => [
@@ -61,6 +85,18 @@ $config = [
     //     // ...
     //     echo ('Hi this is beforeRequest event!');
     // }  
+
+    // 'response' => [
+    //     // ...
+    //     'formatters' => [
+    //         \yii\web\Response::FORMAT_JSON => [
+    //             'class' => 'yii\web\JsonResponseFormatter',
+    //             'prettyPrint' => YII_DEBUG, // используем "pretty" в режиме отладки
+    //             'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+    //             // ...
+    //         ],
+    //     ],
+    // ],    
 ];
 
 if (YII_ENV_DEV) {

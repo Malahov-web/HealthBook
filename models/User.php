@@ -2,7 +2,16 @@
 
 namespace app\models;
 
+// use yii\db\ActiveRecord;
+
 class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+// class User extends \yii\base\Object implements \yii\web\IdentityInterface
+// yii\db\ActiveRecord 
+
+// class User extends yii\db\ActiveRecord
+// class User extends ActiveRecord
+
+
 {
     public $id;
     public $username;

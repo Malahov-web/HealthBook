@@ -44,4 +44,23 @@ class CoursesTypes extends \yii\db\ActiveRecord
             'description' => 'Description',
         ];
     }
+
+    // public function fields()
+    // {
+    //     # code...
+    //     return [
+    //         // 'id',
+    //         'title',
+    //         'description',
+    //     ];
+    // }
+
+    public function fields()
+    {
+        # code...
+        $fields = parent::fields();
+        unset($fields['description']);
+        
+        return $fields;
+    }    
 }
