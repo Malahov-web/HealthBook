@@ -75,3 +75,26 @@ class CoursesTypesController extends ActiveController
     }    
 }
 
+// CREATE TABLE `measurements` (
+// 	`id` INT(11) NOT NULL AUTO_INCREMENT,
+// 	`title` CHAR(128) NOT NULL COLLATE 'utf8_general_ci',
+	
+// 	`temperature` INT(11) NOT NULL,	
+// 	`pressure` INT(11) NOT NULL,	
+// 	`pulse` INT(11) NOT NULL,
+	
+// 	`blood_count_id` INT(11) NOT NULL,
+	
+// 	`birthdate` TIMESTAMP NULL DEFAULT NULL,
+// 	`date_added` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+        
+// 	`description_short` TEXT(65535) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+// 	`logo_url` CHAR(64) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+// 	`website_link` CHAR(64) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+// 	`country` CHAR(64) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+// 	PRIMARY KEY (`id`) USING BTREE
+// )
+// COLLATE='utf8_general_ci'
+// ENGINE=InnoDB
+// AUTO_INCREMENT=4
+// ;

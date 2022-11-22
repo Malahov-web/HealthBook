@@ -3,7 +3,7 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
-$config = [
+$config   = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -77,7 +77,7 @@ $config = [
                 // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 // ['class' => 'yii\rest\UrlRule', 'controller' => 'courses-types'],
                 // ['class' => 'yii\rest\UrlRule', 'controller' => 'courses'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['courses', 'courses-types' ]  ],
+                ['class' => 'yii\rest\UrlRule', 'controller' => [ 'courses', 'courses-types', 'blood-test-research' ]  ],
             ],
         ]
 
