@@ -33,7 +33,8 @@ tests/_support/_generated
 /.vagrant
 
 
-
+#Frontend
+/node_modules
 
 #TEMP
-/healthbook-frontend-app
+# /healthbook-frontend-app
