@@ -1,5 +1,7 @@
 <template>
-  <div>Registration</div>
+  <v-container class="">
+    <div>Registration</div>
+  </v-container>
 </template>
 
 <script>
@@ -11,4 +13,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  max-width: 1200px; // +
+}
+</style>

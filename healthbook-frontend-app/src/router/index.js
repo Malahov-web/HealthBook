@@ -38,14 +38,20 @@ const routes = [
     },
     // Desktop - Courses
     {
-        path: "/register",
+        path: "/courses",
         name: "Courses",
         component: Courses,
     },
 ];
 
+// const router = new VueRouter({
+//     routes,
+// });
 const router = new VueRouter({
+    mode: "history",
+    base: process.env.BASE_URL,
     routes,
+    linkActiveClass: "menu-main__item--active",
 });
 
 export default router;

@@ -3,7 +3,7 @@
     <v-app-bar app color="green" dark>
       <v-toolbar-title>HealthBook</v-toolbar-title>
 
-      <v-toolbar-items class="">
+      <!-- <v-toolbar-items class="">
         <v-btn
           v-for="item in topMenu"
           v-bind:key="item"
@@ -13,7 +13,22 @@
         >
           {{ item }}
         </v-btn>
+      </v-toolbar-items> -->
+
+      <v-toolbar-items class="">
+        <v-btn
+          v-for="item in topMenu"
+          v-bind:key="item"
+          to="#"
+          :title="item"
+          __flat
+        >
+          <router-link :to="{ name: item }">
+            {{ item }}
+          </router-link>
+        </v-btn>
       </v-toolbar-items>
+
       <!-- <v-spacer></v-spacer> -->
 
       <!-- <v-btn
@@ -38,7 +53,26 @@ export default {
 
   data: () => ({
     //
-    topMenu: ["About", "Docs"],
+    topMenu: ["About", "Docs", "Register", "Courses"],
   }),
 };
 </script>
+
+<style lang="scss">
+main,
+.v-main {
+  //   background-color: #ccc;
+  //   max-width: 1485px;
+}
+.container {
+  //   max-width: 1020px; //-
+  //   max-width: 1420px !important; // +
+  //   background-color: #999;
+}
+
+.sidebar {
+  background-color: #f0f0f0;
+  height: calc(100vh);
+  //   position: fixed;
+}
+</style>
