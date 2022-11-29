@@ -1,4 +1,9 @@
 <?php
+// 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: authorization');
+header('Access-Control-Allow-Credentials: true'); 
+
 
 // comment out the following two lines when deployed to production
 defined('YII_DEBUG') or define('YII_DEBUG', true);

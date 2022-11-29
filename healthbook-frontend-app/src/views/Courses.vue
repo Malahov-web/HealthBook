@@ -16,6 +16,23 @@ export default {
   components: {
     // Courses,
   },
+
+  created() {
+    this.$store.dispatch("fetchCoursesTypes");
+    console.log("Create HOOK");
+  },
+
+  computed: {
+    coursesTypes() {
+      //   return this.$store.getters.getCoursesTypes;
+      return this.$store.state.coursesTypes;
+    },
+
+    courses() {
+      //   return this.$store.getters.getCoursesTypes;
+      return this.$store.state.courses;
+    },
+  },
 };
 </script>
 

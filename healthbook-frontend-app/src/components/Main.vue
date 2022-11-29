@@ -1,7 +1,5 @@
 <template>
-  <v-container>
-    <div>Main</div>
-  </v-container>
+  <div>Main</div>
 </template>
 
 <script>
@@ -11,9 +9,3 @@ export default {
 </script>
 
 <style lang="sass" scoped></style>
-
-<style lang="scss">
-.container {
-  //   max-width: 1420px;  // +
-}
-</style>
