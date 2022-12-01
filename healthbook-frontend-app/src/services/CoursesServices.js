@@ -33,5 +33,50 @@ export default {
     getCourses() {
         return axiosInstance.get('/courses');
     },
+
+
+    // v.1
+    copyObjectByCustomProps(arrObjects, customProps) {
+
+        console.log('arrObjects');
+        console.log(arrObjects);
+
+        let newArr = [];
+
+        // 1
+        for (let i = 0; i < arrObjects.length; i++) {
+            const obj = arrObjects[i];
+            debugger
+            let newObj = {};
+
+            // 2
+            for (const key in obj) {
+                // if (Object.hasOwnProperty.call(object, key)) {
+                //     const element = object[key];
+                // }
+
+                // есть ли prop в customProps
+                if (!customProps.includes(key)) {
+                    continue;
+                }
+
+                newObj[key] = obj[key];
+            }
+            //
+            newArr.push(newObj);
+        }
+        // alert();
+        // debugger
+        return newArr; // -
+        // return [1, 2, 3]; // +
+
+    },
+
+    getAlert() {
+        alert('getAlert!');
+    }
+
 }
+
+
 

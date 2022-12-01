@@ -5,32 +5,43 @@
 
       <v-col lg="10">
         <div>Courses</div>
+
+        <CoursesList
+          class="asd"
+          v-bind:courses="courses"
+          v-bind:coursesTypes="coursesTypes"
+        ></CoursesList>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import CoursesList from "@/components/courses/CoursesList.vue";
+
 export default {
   name: "Courses",
   components: {
     // Courses,
+    CoursesList,
   },
 
   created() {
+    this.$store.dispatch("fetchCourses");
     this.$store.dispatch("fetchCoursesTypes");
     console.log("Create HOOK");
   },
 
   computed: {
-    coursesTypes() {
-      //   return this.$store.getters.getCoursesTypes;
-      return this.$store.state.coursesTypes;
+    // getCartProducts() {
+    courses() {
+      //   return this.$store.state.courses;
+      return this.$store.state.courses.courses;
     },
 
-    courses() {
-      //   return this.$store.getters.getCoursesTypes;
-      return this.$store.state.courses;
+    coursesTypes() {
+      //   return this.$store.state.coursesTypes;
+      return this.$store.state.courses.coursesTypes;
     },
   },
 };

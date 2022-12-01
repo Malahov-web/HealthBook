@@ -75,6 +75,16 @@ class CoursesTypesController extends ActiveController
     }    
 }
 
+
+
+
+
+
+
+
+
+
+
 // CREATE TABLE `measurements` (
 // 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 // 	`title` CHAR(128) NOT NULL COLLATE 'utf8_general_ci',

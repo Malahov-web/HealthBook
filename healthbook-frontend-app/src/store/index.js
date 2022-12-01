@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
-        courses,
+        courses: courses,
         // products_modules: products
         // products_module: products,
         // products: products // v3
