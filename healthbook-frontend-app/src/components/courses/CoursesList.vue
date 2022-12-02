@@ -1,29 +1,38 @@
 <template>
   <div>
     <div>CoursesList</div>
-    <!-- <v-data-table
-      :headers="headers"
-      :items="coursesTable"
-      class="elevation-1"
-    ></v-data-table> -->
-
-    <v-data-table
-      :headers="headers"
-      :items="coursesTable"
-      __:items-per-page="5"
-      class="elevation-1"
-    ></v-data-table>
+    <v-simple-table>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-left">Title</th>
+            <th class="text-left">Product name</th>
+            <th class="text-left">Period</th>
+            <th class="text-left">Scheme</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in courses" :key="item.title">
+            <td>{{ item.title }}</td>
+            <td>{{ item.product_name }}</td>
+            <td>{{ formatPeriod(item.date_start, item.date_finish) }}</td>
+            <td>{{ item.dosage }} pill</td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
   </div>
 </template>
 
 <script>
-import CoursesServices from "@/services/CoursesServices.js";
+// import moment from "moment"; .. +
 
 export default {
   name: "CoursesList",
   components: {
     // CoursesList,
   },
+
   props: {
     courses: {
       type: Array,
@@ -41,87 +50,31 @@ export default {
   },
 
   data() {
-    return {
-      headers: [
-        {
-          text: "Title",
-          align: "start",
-          sortable: false,
-          value: "title",
-        },
-        { text: "Product name", value: "medicine_name" },
-        { text: "Period", value: "date_start" },
-        { text: "Date finish", value: "date_finish" },
-        { text: "Scheme", value: "dosage" },
-      ],
-
-      customProps: [
-        "title",
-        "medicine_name",
-        "date_start",
-        "date_finish",
-        "dosage",
-      ],
-
-      //   coursesTable: this.createCoursesTable(),
-      //   coursesTable: CoursesServices.copyObjectByCustomProps(
-      //     this.courses,
-      //     this.customProps
-      //   ),
-      //   coursesTable: [],
-
-      //   coursesTable: CoursesServices.getAlert(),
-
-      testArr: this.createTestArr(),
-    };
-  },
-
-  computed: {
-    coursesTable() {
-      //   coursesTable: this.createCoursesTable(),
-      return CoursesServices.copyObjectByCustomProps(
-        this.courses,
-        this.customProps
-      );
-    },
+    return {};
   },
 
   methods: {
-    // createCoursesTable() {
-    //   let coursesTable = [];
-    //   coursesTable = this.courses.map((currentValue) => {
-    //     return currentValue
-    //   });
-    //   return coursesTable;
-    // },
+    formatPeriod(startDate, finishDate) {
+      console.log(startDate);
+      //   startDateText = moment().format();
 
-    createTestArr() {
-      return [1, 2, 3];
+      //   let startDateMoment = moment("1995-12-25"); // +
+      let startDateMoment = this.$moment(startDate); // +
+      let finishDateMoment = this.$moment(finishDate); // +
+      //   console.log(startDateMoment); // +
+      //   console.log(finishDateMoment);
+
+      //   let startDateText = startDateMoment.format("DD-MM"); // +
+      //   let startDateText = startDateMoment.month(); //  10 - номер месяца
+      //   let startDateText = startDateMoment.month("string"); //  Mon Nov 07 2022 23:51:15 GMT+0300
+      //   let startDateText = startDateMoment.month(); //
+      let startDateText =
+        startDateMoment.format("D MMM") +
+        " - " +
+        finishDateMoment.format("D MMM"); // +/
+
+      return startDateText;
     },
-
-    // createCoursesTable() {
-    //   let coursesTable = [];
-
-    //   for (let i = 0; i < this.courses.length; i++) {
-    //     // const element = this.courses[i];
-
-    //     console.log("this.courses[i]");
-    //     console.log(this.courses[i]);
-    //     coursesTable[i] = {};
-    //     // debugger;
-
-    //     // coursesTable[i]["property"] = this.courses[i]["property"];
-    //     // coursesTable[i]["title"] = this.courses[i]["title"];
-    //     coursesTable[i]["title"] = "asdf";
-    //     // debugger;
-    //     // coursesTable[i]["product_name"] = this.courses[i]["product_name"];
-    //     // coursesTable[i]["date_start"] = this.courses[i]["date_start"];
-    //     // coursesTable[i]["date_finish"] = this.courses[i]["date_finish"];
-    //     // coursesTable[i]["dosage"] = this.courses[i]["dosage"];
-    //   }
-
-    //   return coursesTable;
-    // },
   },
 };
 </script>

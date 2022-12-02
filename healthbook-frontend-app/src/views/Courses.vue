@@ -6,30 +6,79 @@
       <v-col lg="10">
         <div>Courses</div>
 
-        <CoursesList
+        <CoursesTabs
+          class="asd"
+          :courses="courses"
+          :coursesTypes="coursesTypes"
+        ></CoursesTabs>
+
+        <!-- <v-tabs>
+          <v-tab>Item One</v-tab>
+          <v-tab>Item Two</v-tab>
+          <v-tab>Item Three</v-tab>
+        </v-tabs> -->
+
+        <!-- <v-tabs>
+          <v-tab v-for="item in tabs" :key="item.name">
+            {{ item.title }}
+          </v-tab>
+        </v-tabs> -->
+
+        <!-- <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+          <v-tab v-for="item in items" :key="item">
+            {{ item }}
+          </v-tab>
+        </v-tabs> -->
+
+        <!-- <v-tabs-items v-model="tab">
+          <v-tab-item v-for="item in items" :key="item">
+            <v-card color="basil" flat>
+              <v-card-text>{{ text }}</v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items> -->
+
+        <!-- <CoursesList
           class="asd"
           v-bind:courses="courses"
           v-bind:coursesTypes="coursesTypes"
-        ></CoursesList>
+        ></CoursesList> -->
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import CoursesList from "@/components/courses/CoursesList.vue";
+// import CoursesList from "@/components/courses/CoursesList.vue";
+import CoursesTabs from "@/components/courses/CoursesTabs.vue";
 
 export default {
   name: "Courses",
   components: {
     // Courses,
-    CoursesList,
+    // CoursesList,
+    CoursesTabs,
   },
 
   created() {
     this.$store.dispatch("fetchCourses");
     this.$store.dispatch("fetchCoursesTypes");
     console.log("Create HOOK");
+  },
+
+  data() {
+    return {
+      //   tabs: [
+      //     {
+      //       title: "Graph",
+      //       name: "graph", // name
+      //     },
+      //     {
+      //       title: "List",
+      //       name: "list",
+      //     },
+      //   ],
+    };
   },
 
   computed: {
