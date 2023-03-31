@@ -2,12 +2,34 @@
   <div>
     <div>CoursesGraph</div>
 
+    <p>
+      Color for Multivitamine is:
+      <span v-bind:style="{ backgroundColor: getColorHex('Iod') }">
+        {{ getColorHex("Multivitamin") }}
+      </span>
+    </p>
+
     <!-- v4 Advanced Timeline (Multiple range) -->
     <apexchart
       type="rangeBar"
       height="300"
       :options="chartOptionsCourses"
       :series="seriesCourses"
+    ></apexchart>
+
+    <!-- v Real -->
+    <!-- <apexchart
+      type="rangeBar"
+      height="300"
+      :options="chartOptionsCourses"
+      :series="series"
+    ></apexchart> -->
+
+    <apexchart
+      type="rangeBar"
+      height="300"
+      :options="chartOptionsCourses"
+      :series="seriesComputed"
     ></apexchart>
   </div>
 </template>
@@ -193,7 +215,181 @@ export default {
           },
         },
       },
+
+      // my
+
+      /*
+         x = title
+       */
+      // Example:
+      coursesForGraph: [
+        {
+          x: "Multivitamin",
+          y: [
+            new Date("2022-09-12").getTime(),
+            new Date("2022-11-12").getTime(),
+          ],
+        },
+        {
+          x: "title",
+          y: ["date_start", "date_finish"],
+          custom: {
+            supplment: "supplment",
+            type: "type",
+            dosage: "dosage",
+          },
+        },
+      ],
+
+      //
+      series: [
+        {
+          name: "Kirill",
+          data: [],
+          //   data: this.setGraphData(this.courses), // +
+          //   data: this.tempGraphData(this.courses), // Error: is not a function
+          //   data: this.tempGraphData,
+        },
+      ],
     };
+  },
+
+  //   computed: {
+  //     tempGraphData() {
+  //       //   return this.data;
+  //       return this.setGraphData(this.courses);
+  //     },
+  //   },
+
+  computed: {
+    colorScheme() {
+      return this.$store.state.courses.colorScheme;
+    },
+    colors() {
+      return this.$store.state.courses.colors;
+    },
+
+    seriesComputed() {
+      let series = [];
+
+      series = [
+        {
+          name: "Kirill",
+          //   data: [],
+          data: this.setGraphData(this.courses), // +
+          //   data: this.tempGraphData(this.courses), // Error: is not a function
+          //   data: this.tempGraphData,
+        },
+      ];
+      return series;
+    },
+  },
+
+  // Срабатывает, перед тем как получит данные от родителя
+  mounted() {
+    // v3
+    // alert("!");
+    // this.series.data = this.setGraphData(this.courses);
+  },
+
+  methods: {
+    // setGraphData(arr) {
+    //   let newArr = [];
+    //   for (let i = 0; i < arr.length; i++) {
+    //     const coursesItem = arr[i];
+    //     // coursesItem;
+    //     // debugger;
+    //     let newItem = {};
+    //     newItem.x = coursesItem.title;
+    //     newItem.y[0] = new Date("2022-09-12").getTime();
+    //     newItem.y[1] = new Date("2022-11-12").getTime();
+    //     // newArr.push(coursesItem);
+    //     newArr.push(newItem);
+    //     debugger;
+    //   }
+    //   //   debugger;
+    //   return [1, 2, 3]; // +
+    //   //   return newArr;
+    // },
+
+    setGraphData(arr) {
+      // v1
+      //   return [1, 2, 3]; // +
+      // v2
+      //   console.log("this.courses in setGraphData:");
+      // console.log(this.courses); // Array(0)
+      //   return this.courses; // -
+      // не передалось, потому что их там еще нету)
+      // v3
+      let newArr = [];
+      for (let i = 0; i < arr.length; i++) {
+        const coursesItem = arr[i];
+
+        // debugger;
+        let newItem = {};
+        // main
+        newItem.x = coursesItem.title;
+        newItem.y = [];
+        newItem.y[0] = new Date(coursesItem.date_start).getTime();
+        // newItem.y[0] = new Date("2022-09-12").getTime();
+        newItem.y[1] = new Date(coursesItem.date_finish).getTime();
+        // newItem.y[1] = new Date("2022-11-12").getTime();
+        newItem.fillColor = this.getColorHex(coursesItem.medicine_name);
+        // newItem.fillColor = this.getColorHex("Multivitamin");
+        // debugger;
+
+        // custom
+        let custom = {};
+        custom.medicine_name = coursesItem.medicine_name;
+        custom.type_id = coursesItem.type_id;
+        custom.dosage = coursesItem.dosage;
+        newItem.custom = custom;
+
+        // goals
+        // goals: [
+        //     {
+        //         name: "Break",
+        //         //   value: new Date("2022-03-10").getTime(),
+        //         value: new Date("2022-11-10").getTime(),
+        //         //   value: this.todayDate, // -+
+        //         strokeColor: "#CD2F2A",
+        //     },
+        // ],
+
+        let goals = {};
+        goals.name = "Break";
+        // goals.value = new Date().getTime();
+        goals.value = new Date("2022-12-09").getTime();
+        goals.strokeColor = "#CD2F2A";
+        newItem.goals = goals;
+
+        newArr.push(newItem);
+        debugger;
+      }
+      return newArr;
+
+      //   console.log("this.courses in setGraphData computed seriesComputed:");
+      //   console.log(this.courses); // +
+      //   return this.courses; // +
+    },
+
+    getColorHex(courseName) {
+      // Multivitamin
+      //   let courseName = "Multivitamin"; // +
+      let colorName = this.colorScheme[courseName];
+
+      let colorObj = this.colors.find(function (item) {
+        // если true - возвращается текущий элемент и перебор прерывается
+        // если все итерации оказались ложными, возвращается undefined
+        return item.name == colorName;
+      });
+
+      if (colorObj == undefined) {
+        return "#787878";
+      }
+      //   debugger;
+      return colorObj.hex;
+    },
   },
 };
 </script>
