@@ -53,7 +53,8 @@ export default {
 
   data: () => ({
     //
-    topMenu: ["About", "Docs", "Register", "Courses"],
+    // topMenu: ["About", "Docs", "Register", "Courses"],
+    topMenu: ["About", "Docs", "Register", "Goods", "Courses"],
   }),
 };
 </script>

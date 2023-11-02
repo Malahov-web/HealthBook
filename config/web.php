@@ -22,6 +22,7 @@ $config   = [
 
         // ],
 
+        // URL Manager for REST API
         'request' => [
             'cookieValidationKey' => 'arJpdfMzj1hlTFsPXIE1_lkDvUWCJ8YN',
             'parsers' => [
@@ -29,6 +30,10 @@ $config   = [
             ]
         ],    
         
+ 
+        
+        
+
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -58,15 +63,14 @@ $config   = [
         'db' => $db,
 
         // URL Manager
-
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+        // URL Manager for обыные страницы сайта
+        // 'urlManager' => [
+        //     'enablePrettyUrl' => true,
+        //     'showScriptName' => false,
+        //     'rules' => [
+        //     ],
+        // ],
+        
 
         // URL Manager for REST API
         'urlManager' => [
@@ -77,7 +81,15 @@ $config   = [
                 // ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 // ['class' => 'yii\rest\UrlRule', 'controller' => 'courses-types'],
                 // ['class' => 'yii\rest\UrlRule', 'controller' => 'courses'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => [ 'courses', 'courses-types', 'blood-test-research' ]  ],
+                [
+                    'class' => 'yii\rest\UrlRule', 
+                    'controller' => [ 
+                        'courses', 
+                        'courses-types', 
+                        'blood-test-research',
+                        'goods'
+                    ]
+                ],
             ],
         ]
 

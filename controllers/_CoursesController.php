@@ -13,7 +13,7 @@ class CoursesController extends \yii\rest\ActiveController
 
     public $modelClass = 'app\models\Courses';
 
-    // $query = CoursesTypes::find()->all();  // +
+
 
     
 

@@ -5,6 +5,7 @@ import Docs from "../views/Docs.vue";
 
 import Register from "../views/Register.vue";
 import Courses from "../views/Courses.vue";
+import Goods from "../views/GoodsPage.vue";
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,14 @@ const routes = [
         name: "Courses",
         component: Courses,
     },
+    // Desktop (what is mean?) - Goods
+    {
+        path: "/goods",
+        name: "Goods",
+        component: Goods,
+    },
+
+
 ];
 
 // const router = new VueRouter({
