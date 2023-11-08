@@ -16,7 +16,11 @@
 
         <v-row>
           <v-col lg="10" offset-lg="1">
-            <GoodsList class="asd" :goods="goods"></GoodsList>
+            <GoodsList
+              class="asd"
+              :goods="goods"
+              :coursesTypes="coursesTypes"
+            ></GoodsList>
           </v-col>
         </v-row>
       </v-col>
@@ -35,12 +39,19 @@ export default {
   created() {
     this.$store.dispatch("fetchGoods");
     console.log("Create HOOK in GoodsPage.vue");
+
+    this.$store.dispatch("fetchCoursesTypes");
   },
 
   computed: {
     goods() {
       //   return this.$store.state.courses;
       return this.$store.state.goods.goods;
+    },
+
+    coursesTypes() {
+      //   return this.$store.state.coursesTypes;
+      return this.$store.state.courses.coursesTypes;
     },
   },
 };

@@ -5,6 +5,15 @@ import GoodsServices from "@/services/GoodsServices.js";
 export default {
     state: {
         goods: [],
+
+        // release_form 
+        releaseForms: {
+            "1": "Tablets",
+            "2": "Capsules",
+            "3": "Spray",
+            // water soluble tablet ?
+            // lozeng tablet - рассасывательная таблетка
+        }
     },
     getters: {
         value: state => {

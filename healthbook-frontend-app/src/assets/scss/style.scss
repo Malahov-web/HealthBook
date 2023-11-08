@@ -1,0 +1,38 @@
+.page-title {
+    margin: 1em 0;
+}
+
+.page-subtitle {
+    margin-bottom: 2em; // 32 ?
+}
+
+
+.goods__table-item-type-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2px;
+
+    width: 1.71428em; // 1em;
+    height: 1.71428em; // 1em;
+    border-radius: 50%;
+
+    //
+    font-style: 14px; // 14/24
+    line-height: 1.71428em;
+    color: #fff;
+}
+
+.goods__table-item-type-icon {}
+
+.goods__table-item-type-icon {}
+
+// icons
+i {}
+
+
+// Vuetify
+.goods__add .v-btn {
+    text-transform: none;
+    // text-transform-none
+}
