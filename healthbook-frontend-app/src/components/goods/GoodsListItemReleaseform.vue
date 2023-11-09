@@ -7,8 +7,10 @@
     <!-- <v-icon medium color="gray _darken-2"> mdi-domain </v-icon> -->
     <!-- {{ setReleaseForm(item.release_form) }} -->
 
-    <span>
-      <i :class="setReleaseForm(releaseForm).toLocaleLowerCase()"></i>
+    <span class="goods__table-item-release-icon">
+      <i :class="setReleaseForm(releaseForm).toLocaleLowerCase()">
+        <img :src="makeImagUrl(setReleaseForm(releaseForm))" alt="" />
+      </i>
       {{ setReleaseForm(releaseForm) }}
       <!-- {{ setReleaseForm(releaseForm).toLocaleLowerCase() }} -->
     </span>
@@ -26,10 +28,6 @@ export default {
     },
   },
 
-  //   created() {
-  //     this.$store.dispatch("fetchCoursesTypes");
-  //   },
-
   computed: {
     releaseForms() {
       return this.$store.state.goods.releaseForms;
@@ -41,6 +39,10 @@ export default {
       //   release_form;
       return this.releaseForms[release_form];
       //   return this.releaseForms[release_form] str.toLocaleLowerCase();
+    },
+
+    makeImagUrl(iconNameStr) {
+      return `../images/icons/${iconNameStr.toLowerCase()}.svg`;
     },
 
     // +

@@ -1,6 +1,6 @@
 <template>
   <div>
-    GoodsTable
+    <!-- GoodsTable -->
 
     <template>
       <v-data-table
@@ -84,7 +84,6 @@ export default {
         { text: "Brand", value: "brand" },
         { text: "Type", value: "type" },
         { text: "Form ", value: "release_form" },
-        // { text: "Form ", value: setReleaseForm },
       ],
     };
   },
