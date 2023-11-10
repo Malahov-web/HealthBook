@@ -7,6 +7,17 @@
 }
 
 
+// 3?. Goods
+
+.goods__table {
+
+    tr {
+        td:first-child {
+            width: 42px + 16px + 16px; // 16 + width + 16
+        }
+    }
+}
+
 .goods__table-item-type-icon {
     display: inline-flex;
     justify-content: center;

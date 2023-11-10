@@ -6,13 +6,18 @@
       <v-data-table
         :headers="headers"
         :items="goods"
-        __:items-per-page="3"
+        :search="search"
         :items-per-page="itemsPerPage"
         :page.sync="page"
         class="elevation-1"
         hide-default-footer
         @page-count="pageCount = $event"
       >
+        <template v-slot:item.image_url="{ item }">
+          <GoodsListItemImage class="asd" :imageName="item.image_url">
+          </GoodsListItemImage>
+        </template>
+
         <template v-slot:item.type="{ item }">
           <GoodsListItemType class="asd" :type="item.type"> </GoodsListItemType>
         </template>
@@ -43,6 +48,7 @@
 <script>
 import GoodsListItemReleaseform from "@/components/goods/GoodsListItemReleaseform.vue";
 import GoodsListItemType from "@/components/goods/GoodsListItemType.vue";
+import GoodsListItemImage from "@/components/goods/GoodsListItemImage.vue";
 
 export default {
   name: "GoodsTable",
@@ -50,6 +56,7 @@ export default {
   components: {
     GoodsListItemReleaseform,
     GoodsListItemType,
+    GoodsListItemImage,
   },
 
   props: {
@@ -58,6 +65,11 @@ export default {
       default: () => {
         return [];
       },
+    },
+
+    search: {
+      type: String,
+      default: "",
     },
   },
 
@@ -75,6 +87,13 @@ export default {
       itemsPerPage: 10, // 3,
 
       headers: [
+        {
+          //   text: "Image",
+          text: "",
+          //   align: "start",
+          sortable: false,
+          value: "image_url",
+        },
         {
           text: "Title",
           align: "start",

@@ -36,14 +36,10 @@
       <GoodsTable
         :goods="goods"
         :coursesTypes="coursesTypes"
+        :search="inputText"
         class="goods__table"
       >
       </GoodsTable>
-      <!-- <table class="">
-        <tr>
-          <td>123</td>
-        </tr>
-      </table> -->
     </div>
 
     <!-- <div class="goods__pagination">
@@ -83,6 +79,23 @@ export default {
       //   inputText: "youtub", // TEMP DEV
       //   inputText: "loud", // +
       //   inputText: "live", //
+
+      // Поиск
+      page: 1,
+      pageCount: 0,
+      itemsPerPage: 10, // 3,
+
+      headers: [
+        {
+          text: "Title",
+          align: "start",
+          sortable: false,
+          value: "title",
+        },
+        { text: "Brand", value: "brand" },
+        { text: "Type", value: "type" },
+        { text: "Form ", value: "release_form" },
+      ],
     };
   },
 };
