@@ -16,11 +16,14 @@
 
         <v-row>
           <v-col lg="10" offset-lg="1">
-            <GoodsList
+            <!-- <GoodsList
               class="asd"
               :goods="goods"
               :coursesTypes="coursesTypes"
-            ></GoodsList>
+            ></GoodsList> -->
+
+            <GoodsAdd class="asd" :brands="brands" :coursesTypes="coursesTypes">
+            </GoodsAdd>
           </v-col>
         </v-row>
       </v-col>
@@ -29,18 +32,22 @@
 </template>
 
 <script>
-import GoodsList from "@/components/goods/GoodsList.vue";
+// import GoodsList from "@/components/goods/GoodsList.vue";
+import GoodsAdd from "@/components/goods/GoodsAdd.vue";
 
 export default {
   name: "GoodsPage",
   components: {
-    GoodsList,
+    // GoodsList,
+    GoodsAdd,
   },
   created() {
     this.$store.dispatch("fetchGoods");
     console.log("Create HOOK in GoodsPage.vue");
 
     this.$store.dispatch("fetchCoursesTypes");
+
+    this.$store.dispatch("fetchBrands");
   },
 
   computed: {
@@ -52,6 +59,11 @@ export default {
     coursesTypes() {
       //   return this.$store.state.coursesTypes;
       return this.$store.state.courses.coursesTypes;
+    },
+
+    brands() {
+      //   return this.$store.state.courses;
+      return this.$store.state.goods.brands;
     },
   },
 };

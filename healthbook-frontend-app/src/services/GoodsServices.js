@@ -21,6 +21,11 @@ export default {
     },
 
 
+    getBrands() {
+        return axiosInstance.get('/brands');
+    },
+
+
     getAlert() {
         alert('getAlert!');
     }

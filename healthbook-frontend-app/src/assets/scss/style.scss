@@ -55,8 +55,43 @@ i {}
 }
 
 
+.goods-form {}
+
+.goods__form {}
+
+
 // Vuetify
 .goods__add .v-btn {
     text-transform: none;
     // text-transform-none
+}
+
+.v-btn {
+    text-transform: none !important;
+}
+
+
+// Componnts - Forms 
+
+.form {}
+
+.form-field {
+    margin-bottom: 40px; // Иначе зачем класс, если к каждому элементу добалять mt-40 ?)
+}
+
+.form-field-title {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #555;
+}
+
+.form-field {
+    .v-radio {
+        // margin-top: 16px;
+    }
+
+    .v-input--radio-group--column .v-radio:not(:last-child):not(:only-child) {
+        margin-bottom: 16px; //8px;
+    }
 }

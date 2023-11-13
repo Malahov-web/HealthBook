@@ -87,7 +87,8 @@ $config   = [
                         'courses', 
                         'courses-types', 
                         'blood-test-research',
-                        'goods'
+                        'goods',
+                        'brands'
                     ]
                 ],
             ],
