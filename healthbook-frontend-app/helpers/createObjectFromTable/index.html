@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Objects - tasks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content='true' name='HandheldFriendly'>
+    <meta content='width' name='MobileOptimized'>
+
+
+    <!--link rel="stylesheet" type="text/css" href="style.css"-->
+    {#
+    <link rel="stylesheet" type="text/css" href="https://drive.google.com/file/d/1ICqqUpCmoyBL5-u2sBvMa-5ETF-2QRz9"> #}
+
+
+</head>
+<style>
+    .header {
+        background-color: #eedd33;
+    }
+
+    .container {
+        margin: 0 auto;
+        max-width: 1400px;
+    }
+</style>
+
+
+<body>
+
+
+
+
+
+    <div id="my-page">
+
+        <header class="header">
+
+
+            <div class="header-bottom">
+
+                <div class="container">
+                    <div class="row-flex">
+
+                        <div class="ds_12 title">helper - createArrayFromTableStrings</div>
+                    </div>
+                    <div class="row-flex middle">
+
+                        <div class="mv_4 tb_2 ds_3 logo-outer header__logo">
+                            <div class="logo">
+                                <a href="#"><img src="../images/logo.png" alt="Car Audio 2"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="section section-team">
+            <div class="container">
+
+                <div class="row">
+                    <div class="mv_12 centered">
+                        <h2 class="section__title">Create Object From Table</h2>
+                        <!-- <div class="section__subtitle">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
+                            enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</div> -->
+
+                        <div class="section__table" id="composition-table-outer">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th align="center">
+                                            Активный компонент
+                                        </th>
+                                        <th align="center">
+                                            Содержание в&nbsp;суточной норме потребления (1&nbsp;таблетка, покрытая
+                                            оболочкой, массой 1400&nbsp;мг)
+                                        </th>
+                                        <th align="center">
+                                            %&nbsp;от&nbsp;рекомендуемого уровня суточного потребления или адекватного*
+                                            уровня потребления
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин, А
+                                        </td>
+                                        <td>
+                                            0,8&nbsp;мг
+                                        </td>
+                                        <td>
+                                            100
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин С
+                                        </td>
+                                        <td>
+                                            80&nbsp;мг
+                                        </td>
+                                        <td>
+                                            133**
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин B<sub>1</sub>
+                                        </td>
+                                        <td>
+                                            1,1&nbsp;мг
+                                        </td>
+                                        <td>
+                                            79
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин B<sub>2</sub>
+                                        </td>
+                                        <td>
+                                            1,4&nbsp;мг
+                                        </td>
+                                        <td>
+                                            88
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин B<sub>3</sub>&nbsp;(PP)
+                                        </td>
+                                        <td>
+                                            16&nbsp;мг
+                                        </td>
+                                        <td>
+                                            89
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин В<sub>5</sub>
+                                        </td>
+                                        <td>
+                                            6&nbsp;мг
+                                        </td>
+                                        <td>
+                                            100
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин B<sub>6</sub>
+                                        </td>
+                                        <td>
+                                            1,4&nbsp;мг
+                                        </td>
+                                        <td>
+                                            70
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин В<sub>12</sub>
+                                        </td>
+                                        <td>
+                                            2,5 мкг
+                                        </td>
+                                        <td>
+                                            250**
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин D<sub>3</sub>&nbsp;(200&nbsp;МЕ)
+                                        </td>
+                                        <td>
+                                            5&nbsp;мкг
+                                        </td>
+                                        <td>
+                                            100
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин E
+                                        </td>
+                                        <td>
+                                            12&nbsp;мг
+                                        </td>
+                                        <td>
+                                            120**
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Витамин К<sub>1</sub>
+                                        </td>
+                                        <td>
+                                            75&nbsp;мкг
+                                        </td>
+                                        <td>
+                                            63*
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Биотин
+                                        </td>
+                                        <td>
+                                            50&nbsp;мкг
+                                        </td>
+                                        <td>
+                                            100
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Фолиевая кислота
+                                        </td>
+                                        <td>
+                                            200 мкг
+                                        </td>
+                                        <td>
+                                            100
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Цинк
+                                        </td>
+                                        <td>
+                                            10&nbsp;мг
+                                        </td>
+                                        <td>
+                                            67
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Магний
+                                        </td>
+                                        <td>
+                                            100&nbsp;мг
+                                        </td>
+                                        <td>
+                                            25
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Марганец
+                                        </td>
+                                        <td>
+                                            2&nbsp;мг
+                                        </td>
+                                        <td>
+                                            100*
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Медь
+                                        </td>
+                                        <td>
+                                            1&nbsp;мг
+                                        </td>
+                                        <td>
+                                            100*
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Селен
+                                        </td>
+                                        <td>
+                                            55&nbsp;мкг
+                                        </td>
+                                        <td>
+                                            79
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Йод (экстракт Fucus vesiculosus (150&nbsp;мг), содержащий 0,1% йода)
+                                        </td>
+                                        <td>
+                                            150 мкг
+                                        </td>
+                                        <td>
+                                            100
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Железо
+                                        </td>
+                                        <td>
+                                            14&nbsp;мг
+                                        </td>
+                                        <td>
+                                            100
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Кальций
+                                        </td>
+                                        <td>
+                                            120&nbsp;мг
+                                        </td>
+                                        <td>
+                                            12
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Коэнзим Q10
+                                        </td>
+                                        <td>
+                                            10&nbsp;мг
+                                        </td>
+                                        <td>
+                                            33*
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+
+
+        This is the default content
+
+
+
+
+
+    </div>
+
+
+
+    <!-- JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script> -->
+
+    <!-- <script src="js/min/scripts.min.js"> </script> -->
+    {#
+    <script src="js/scripts.min.js"> </script> #}
+
+    {#
+    <script src="https://www.jsdelivr.com/package/npm/lodash"> </script> #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+        integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js"> </script>
+
+</body>
+
+</html>

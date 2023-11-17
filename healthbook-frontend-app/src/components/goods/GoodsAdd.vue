@@ -128,6 +128,7 @@
               name="textarea-composition"
               label="Composition"
               value=""
+              v-model="compositionActive"
               hide-details=""
             ></v-textarea>
           </div>
@@ -148,6 +149,14 @@
           >
             Add
           </v-btn>
+          <!-- Контейнер для обрабатывемой таблицы -->
+          <div
+            class="composition__table"
+            _v-html="compositionTableHtml"
+            __v-html="compositionTableHtmlStr"
+            v-html="compositionTableHtmlCleaned"
+            v-if="1"
+          ></div>
         </v-col>
       </v-row>
     </div>
@@ -186,6 +195,271 @@ export default {
       brandActive: null,
 
       releaseFormsActive: null,
+
+      compositionActive: "",
+
+      compositionTableHtml: `
+<table>
+		<tbody>
+		<tr>
+			<th align="center">
+				 Активный компонент
+			</th>
+			<th align="center">
+				 Содержание в&nbsp;суточной норме потребления (1&nbsp;таблетка, покрытая оболочкой, массой 1400&nbsp;мг)
+			</th>
+			<th align="center">
+				 %&nbsp;от&nbsp;рекомендуемого уровня суточного потребления или адекватного* уровня потребления
+			</th>
+		</tr>
+		<tr>
+			<td>
+				 Витамин, А
+			</td>
+			<td>
+				 0,8&nbsp;мг
+			</td>
+			<td>
+				 100
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин С
+			</td>
+			<td>
+				 80&nbsp;мг
+			</td>
+			<td>
+				 133**
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин B<sub>1</sub>
+			</td>
+			<td>
+				 1,1&nbsp;мг
+			</td>
+			<td>
+				 79
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин B<sub>2</sub>
+			</td>
+			<td>
+				 1,4&nbsp;мг
+			</td>
+			<td>
+				 88
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин B<sub>3</sub>&nbsp;(PP)
+			</td>
+			<td>
+				 16&nbsp;мг
+			</td>
+			<td>
+				 89
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин В<sub>5</sub>
+			</td>
+			<td>
+				 6&nbsp;мг
+			</td>
+			<td>
+				 100
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин B<sub>6</sub>
+			</td>
+			<td>
+				 1,4&nbsp;мг
+			</td>
+			<td>
+				 70
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин В<sub>12</sub>
+			</td>
+			<td>
+				 2,5 мкг
+			</td>
+			<td>
+				 250**
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин D<sub>3</sub>&nbsp;(200&nbsp;МЕ)
+			</td>
+			<td>
+				 5&nbsp;мкг
+			</td>
+			<td>
+				 100
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин E
+			</td>
+			<td>
+				 12&nbsp;мг
+			</td>
+			<td>
+				 120**
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Витамин К<sub>1</sub>
+			</td>
+			<td>
+				 75&nbsp;мкг
+			</td>
+			<td>
+				 63*
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Биотин
+			</td>
+			<td>
+				 50&nbsp;мкг
+			</td>
+			<td>
+				 100
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Фолиевая кислота
+			</td>
+			<td>
+				 200 мкг
+			</td>
+			<td>
+				 100
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Цинк
+			</td>
+			<td>
+				 10&nbsp;мг
+			</td>
+			<td>
+				 67
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Магний
+			</td>
+			<td>
+				 100&nbsp;мг
+			</td>
+			<td>
+				 25
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Марганец
+			</td>
+			<td>
+				 2&nbsp;мг
+			</td>
+			<td>
+				 100*
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Медь
+			</td>
+			<td>
+				 1&nbsp;мг
+			</td>
+			<td>
+				 100*
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Селен
+			</td>
+			<td>
+				 55&nbsp;мкг
+			</td>
+			<td>
+				 79
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Йод (экстракт Fucus vesiculosus (150&nbsp;мг), содержащий 0,1% йода)
+			</td>
+			<td>
+				 150 мкг
+			</td>
+			<td>
+				 100
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Железо
+			</td>
+			<td>
+				 14&nbsp;мг
+			</td>
+			<td>
+				 100
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Кальций
+			</td>
+			<td>
+				 120&nbsp;мг
+			</td>
+			<td>
+				 12
+			</td>
+		</tr>
+		<tr>
+			<td>
+				 Коэнзим Q10
+			</td>
+			<td>
+				 10&nbsp;мг
+			</td>
+			<td>
+				 33*
+			</td>
+		</tr>
+		</tbody>
+		</table>      
+      `,
+
+      //   compositionTableHtmlStr: `
+      // "<table>\n\t\t<tbody>\n\t\t<tr>\n\t\t\t<th align=\"center\">\n\t\t\t\t Активный компонент\n\t\t\t</th>\n\t\t\t<th align=\"center\">\n\t\t\t\t Содержание в&nbsp;суточной норме потребления (1&nbsp;таблетка, покрытая оболочкой, массой 1400&nbsp;мг)\n\t\t\t</th>\n\t\t\t<th align=\"center\">\n\t\t\t\t %&nbsp;от&nbsp;рекомендуемого уровня суточного потребления или адекватного* уровня потребления\n\t\t\t</th>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин, А\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 0,8&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин С\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 80&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 133**\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин B<sub>1</sub>\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 1,1&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 79\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин B<sub>2</sub>\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 1,4&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 88\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин B<sub>3</sub>&nbsp;(PP)\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 16&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 89\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин В<sub>5</sub>\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 6&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин B<sub>6</sub>\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 1,4&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 70\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин В<sub>12</sub>\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 2,5 мкг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 250**\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин D<sub>3</sub>&nbsp;(200&nbsp;МЕ)\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 5&nbsp;мкг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин E\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 12&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 120**\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Витамин К<sub>1</sub>\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 75&nbsp;мкг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 63*\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Биотин\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 50&nbsp;мкг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Фолиевая кислота\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 200 мкг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Цинк\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 10&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 67\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Магний\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 25\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Марганец\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 2&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100*\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Медь\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 1&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100*\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Селен\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 55&nbsp;мкг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 79\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Йод (экстракт Fucus vesiculosus (150&nbsp;мг), содержащий 0,1% йода)\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 150 мкг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Железо\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 14&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 100\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Кальций\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 120&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 12\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>\n\t\t\t\t Коэнзим Q10\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 10&nbsp;мг\n\t\t\t</td>\n\t\t\t<td>\n\t\t\t\t 33*\n\t\t\t</td>\n\t\t</tr>\n\t\t</tbody>\n\t\t</table>"    `,
     };
   },
 
@@ -200,6 +474,11 @@ export default {
     },
     typesColors() {
       return this.$store.state.goods.typesColors;
+    },
+
+    compositionTableHtmlCleaned() {
+      //   return this.cleanCompositionTableHtml(this.compositionTableHtmlStr);
+      return this.cleanCompositionTableHtml(this.compositionActive);
     },
   },
 
@@ -217,6 +496,7 @@ export default {
       this.item.brand = this.brandActive;
       this.item.type = this.formatTypeArrayToNumber(this.typeActive);
       this.item.release_form = this.releaseFormsActive;
+      this.item.composition = this.compositionActive;
       //   this.item.title = this.titleActive;
       //   this.item.title = this.titleActive;
 
@@ -235,6 +515,25 @@ export default {
 
       // toNum
       return Number.parseInt(typesStr);
+    },
+
+    formatComposition(text) {
+      //
+      return text;
+    },
+
+    cleanCompositionTableHtml(text) {
+      let textCleaned = text;
+
+      //   const textWithBreaks = "Пример текста\nс переносами\nстрок";
+      textCleaned = text.replace(/\n/g, "");
+      textCleaned = textCleaned.replace(/\t/g, "");
+      //   textCleaned = textCleaned.replace(/\"/g, "''");
+
+      console.log("textCleaned"); // выведет "Пример текстас переносамистрок"
+      console.log(textCleaned); // выведет "Пример текстас переносамистрок"
+
+      return textCleaned;
     },
   },
 };
