@@ -152,10 +152,12 @@
           <!-- Контейнер для обрабатывемой таблицы -->
           <div
             class="composition__table"
+            id="compositionTableOuter"
             _v-html="compositionTableHtml"
             __v-html="compositionTableHtmlStr"
             v-html="compositionTableHtmlCleaned"
             v-if="1"
+            ref="compositionTableOuter"
           ></div>
         </v-col>
       </v-row>
@@ -166,6 +168,8 @@
 </template>
 
 <script>
+import GoodsServices from "@/services/GoodsServices.js";
+
 export default {
   name: "GoodsAdd",
 
@@ -496,9 +500,8 @@ export default {
       this.item.brand = this.brandActive;
       this.item.type = this.formatTypeArrayToNumber(this.typeActive);
       this.item.release_form = this.releaseFormsActive;
-      this.item.composition = this.compositionActive;
-      //   this.item.title = this.titleActive;
-      //   this.item.title = this.titleActive;
+      //   this.item.composition = this.compositionActive;
+      this.item.composition = this.formatComposition(this.compositionActive);
 
       this.$store.dispatch("addGoodsItem", this.item);
     },
@@ -517,11 +520,6 @@ export default {
       return Number.parseInt(typesStr);
     },
 
-    formatComposition(text) {
-      //
-      return text;
-    },
-
     cleanCompositionTableHtml(text) {
       let textCleaned = text;
 
@@ -534,6 +532,23 @@ export default {
       console.log(textCleaned); // выведет "Пример текстас переносамистрок"
 
       return textCleaned;
+    },
+
+    formatComposition() {
+      // 1. получим html table
+      // Для доступа к dom используем назначенную ранне ссылку:
+      // <div ref="compositionTableOuter">
+      const tableOuterEl = this.$refs.compositionTableOuter;
+      let tableEl = tableOuterEl.querySelector("table");
+      // 2. вызовем ф-ю форматтер\
+      console.log("tableEl");
+      console.log(tableEl);
+      return GoodsServices.createObjectFromTable(tableEl);
+
+      //   const tableOuterElID = tableOuterEl.id;
+      //   console.log("tableOuterElID");
+      //   console.log(tableOuterElID);
+      //   return GoodsServices.createObjectFromTable(tableOuterElID);
     },
   },
 };
