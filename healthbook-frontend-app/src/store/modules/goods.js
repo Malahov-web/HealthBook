@@ -66,7 +66,7 @@ export default {
         },
 
         // addGoodsItem({ commit }) {
-        addGoodsItem({ commit, }, goodsItem) {
+        __addGoodsItem({ commit, }, goodsItem) {
 
             commit("ADD_GOODS_ITEM", goodsItem);
 
@@ -75,6 +75,52 @@ export default {
             //     console.log("goods has been fetched:", response); // <--- here
             // });
         },
+
+
+        addGoodsItem({ commit }, goodsItem) {
+
+
+            return GoodsServices.postGoodsItem(goodsItem)
+                .then(() => {
+                    commit("ADD_GOODS_ITEM", goodsItem);
+                    const notification = {
+                        type: "success",
+                        object: "Your post has been successfully added",
+                    };
+                    // dispatch("notifications/add", notification, { root: true });
+                    console.log('Notification: ');
+                    console.log(notification);
+                })
+                .catch((error) => {
+                    const notification = {
+                        type: "error",
+                        object: "Your post was not added, reason: " + error.message,
+                    };
+                    // dispatch("notifications/add", notification, { root: true });
+                    console.log('Notification: ');
+                    console.log(notification);
+                });
+
+        },
+
+        // addNewsItem({ commit, dispatch }, item) {
+        //     return NewsServices.postNewsItem(item)
+        //         .then(() => {
+        //             commit("ADD_NEWS_ITEM", item);
+        //             const notification = {
+        //                 type: "success",
+        //                 object: "Your post has been successfully added",
+        //             };
+        //             dispatch("notifications/add", notification, { root: true });
+        //         })
+        //         .catch((error) => {
+        //             const notification = {
+        //                 type: "error",
+        //                 object: "Your post was not added, reason: " + error.message,
+        //             };
+        //             dispatch("notifications/add", notification, { root: true });
+        //         });
+        // },
 
     }
 };

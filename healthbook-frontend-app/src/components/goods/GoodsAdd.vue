@@ -492,14 +492,32 @@ export default {
       return Math.floor(Math.random() * 10000000);
     },
 
-    createItem() {
+    __createItem() {
       let id = this.generateID();
       this.item.id = id;
 
       this.item.title = this.titleActive;
+      this.item.name = this.titleActive; // + ! name задан как обязательный параметр на сервере
       this.item.brand = this.brandActive;
       this.item.type = this.formatTypeArrayToNumber(this.typeActive);
       this.item.release_form = this.releaseFormsActive;
+      //   this.item.composition = this.compositionActive;
+      this.item.composition = this.formatComposition(this.compositionActive);
+
+      this.$store.dispatch("addGoodsItem", this.item);
+    },
+
+    // Витрум Энерджи таблетки шипучие массой 3,8 г
+    // v. for Testing JSON API
+    createItem() {
+      let id = this.generateID();
+      this.item.id = id;
+
+      this.item.title = "Витрум Энерджи таблетки шипучие массой 3,8 г";
+      this.item.name = "Витрум Энерджи таблетки шипучие массой 3,8 г";
+      this.item.brand = 1;
+      this.item.type = 21;
+      this.item.release_form = 1;
       //   this.item.composition = this.compositionActive;
       this.item.composition = this.formatComposition(this.compositionActive);
 
