@@ -293,6 +293,7 @@ export default {
     },
 
     // 4.2.8
+    // _v__4_2_8__
     postGoodsItem(item) {
 
         console.log('item');
@@ -315,7 +316,7 @@ export default {
             redirect: 'follow'
         };
 
-        fetch("http://healthbook.loc/goods", requestOptions)
+        return fetch("http://healthbook.loc/goods", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
