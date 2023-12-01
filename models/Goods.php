@@ -54,7 +54,11 @@ class Goods extends \yii\db\ActiveRecord
             
             [['title', 'name', 'description'], 'string', 'max' => 128],
             
-            [['release_form'], 'integer'],
+            // [['release_form'], 'integer'],
+            // [['composition'], 'json'], // error 500
+            // [['composition'], 'string'], // работает, но сохраняет как строку
+            // [['composition'], ''], // error 500
+            // [['composition'], 'array'], //  error 500
         ];
     }
 
@@ -71,6 +75,7 @@ class Goods extends \yii\db\ActiveRecord
             'brand' => 'Brand',
             'manufacturer' => 'Manufacturer',
             'description' => 'Composition',
+            // 'composition' => 'Composition',
 
         ];
     }

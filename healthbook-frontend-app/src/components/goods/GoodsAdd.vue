@@ -163,7 +163,16 @@
       </v-row>
     </div>
 
-    <div class="goods__list mt-12"></div>
+    <div class="goods__list mt-12">
+      <!-- <v-data-table :headers="headers" :items="goods" class="elevation-1">
+        <template v-slot:item.composition="{ item }">
+
+          <div dark>
+            {{ makeComposition(item.composition) }}
+          </div>
+        </template>
+      </v-data-table> -->
+    </div>
   </div>
 </template>
 
@@ -190,6 +199,23 @@ export default {
 
   data() {
     return {
+      // for goods list
+      headers: [
+        { text: "ID", value: "id" },
+        { text: "title", value: "title", align: "start" },
+        { text: "name", value: "name" },
+        { text: "description", value: "description" },
+        { text: "composition", value: "composition" },
+        // {
+        //   text: "Dessert (100g serving)",
+
+        //   sortable: false,
+        //   value: "name",
+        // },
+        // { text: "Calories", value: "calories" },
+        // { text: "Fat (g)", value: "fat" },
+      ],
+      //
       item: {},
 
       titleActive: "",
@@ -468,10 +494,22 @@ export default {
   },
 
   created() {
+    this.$store.dispatch("fetchGoods");
+    console.log("Create HOOK in GoodsPage.vue");
+    // for goods list test end
     this.$store.dispatch("fetchBrands");
   },
 
   computed: {
+    // goods
+    goods() {
+      return this.$store.state.goods.goods;
+    },
+    goodsFormatted() {
+      return this.formatGoods(this.goods);
+    },
+
+    // for goods list tst nd
     releaseForms() {
       //   return this.$store.state.courses;
       return this.$store.state.goods.releaseForms;
@@ -487,12 +525,38 @@ export default {
   },
 
   methods: {
+    makeComposition(str) {
+      //   let obj = JSON.parse(str);
+      //   return obj;
+      return str;
+    },
+    formatCompositionProp(obj) {
+      if (typeof obj.composition == "string") {
+        let compStr = obj.composition;
+        let compObj = JSON.parse(compStr);
+
+        obj.composition = compObj;
+      }
+
+      return obj;
+    },
+    formatGoods(goodsArr) {
+      // composition
+      let goodsNew = goodsArr.map((currentItem) => {
+        // currentItem
+
+        return this.formatCompositionProp(currentItem);
+      });
+
+      return goodsNew;
+    },
+    //
     generateID() {
       // let id = Math.floor(Math.random() * 10000000)
       return Math.floor(Math.random() * 10000000);
     },
 
-    __createItem() {
+    createItem() {
       let id = this.generateID();
       this.item.id = id;
 
@@ -503,13 +567,14 @@ export default {
       this.item.release_form = this.releaseFormsActive;
       //   this.item.composition = this.compositionActive;
       this.item.composition = this.formatComposition(this.compositionActive);
+      this.item.composition = JSON.stringify(this.item.composition);
 
       this.$store.dispatch("addGoodsItem", this.item);
     },
 
     // Витрум Энерджи таблетки шипучие массой 3,8 г
     // v. for Testing JSON API
-    createItem() {
+    __createItem() {
       let id = this.generateID();
       this.item.id = id;
 

@@ -25,10 +25,95 @@ export default {
     // }    ,
 
     // v default
-    // postGoodsItem(item) {
-    //     return axiosInstance.post('/goods', item)
-    // },
+    __postGoodsItem(item) {
 
+        // item =
+        // {
+        //     "title": "Витрум Энерджи таблетки шипучие массой 3,8 г",
+        //     "name": "Vitrum Energy",
+        //     "brand": 2
+        // };
+        // let itemJson = `{"screen": "50 inch", "resolution": "2048 x 1152 pixels", "ports": {"hdmi": 1, "usb": 3}, "speakers": {"left": "10 watt", "right": "10 watt"}}`;
+
+        // let itemJson = item;
+        // let itemJson = JSON.stringify(item)
+
+
+        console.log('item');
+        console.log(item);
+        // console.log('itemJson');
+        // console.log(itemJson);
+
+        return axiosInstance.post('/goods', item)
+        // return axiosInstance.post('/goods', itemJson)
+        // return 1;
+    },
+
+    // test JSON
+    postGoodsItem(item) {
+
+        // __item =
+        // {
+        //     // "title": "Витрум Энерджи таблетки шипучие массой 3,8 г",
+        //     "title": "Витрум Энерджи таблетки шипучие",
+        //     "name": "Vitrum Energy",
+        //     "brand": 4,
+        //     "description": "Lorem Ipsum",
+        //     // "composition": "Lorem Ipsum"
+        //     // "composition": `{"title":"Витрум Энерджи таблетки шипучие массой 3,8 г","name":"Vitrum Energy","brand":2}`
+        //     // "composition": {
+        //     //     "asd": 0.1,
+        //     //     "bcd": 2
+        //     // }
+        //     "composition": { "screen": "50 inch", "resolution": "2048 x 1152 pixels", "ports": { "hdmi": 1, "usb": 3 }, "speakers": { "left": "10 watt", "right": "10 watt" } }
+        // };
+
+        item =
+        {
+            // "title": "Витрум Энерджи таблетки шипучие массой 3,8 г",
+            "title": "Витрум Энерджи таблетки шипучие",
+            "name": "Vitrum Energy",
+            "brand": 4,
+            // "description": "Lorem Ipsum",
+            "description": `{"title":"Витрум Энерджи таблетки шипучие массой 3,8 г","name":"Vitrum Energy","brand":2}`,
+            // "composition": { "title": "Витрум Энерджи таблетки шипучие массой 3,8 г", "name": "Vitrum Energy", "brand": 2 },
+            "composition": {
+                "asd": 0.1,
+                "bcd": 2
+            }
+
+        };
+        // let itemJson = `{"screen": "50 inch", "resolution": "2048 x 1152 pixels", "ports": {"hdmi": 1, "usb": 3}, "speakers": {"left": "10 watt", "right": "10 watt"}}`;
+
+        // let itemJson = item;
+        let itemJson = JSON.stringify(item);
+        // {"title":"Витрум Энерджи таблетки шипучие массой 3,8 г","name":"Vitrum Energy","brand":2}
+
+
+        console.log('item');
+        console.log(item);
+        console.log('itemJson');
+        console.log(itemJson);
+
+        // return axiosInstance.post('/goods', item)
+        // return axiosInstance.post('/goods', itemJson)
+        return axiosInstance.post('/goods', itemJson)
+        // return 1;
+    },
+
+
+
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
     // 6.2.4
     __v__postGoodsItem(item) {
 
@@ -62,7 +147,7 @@ export default {
     },
 
     // 6.2.5.1, 2
-    __v_2__postGoodsItem(item) {
+    __v_2__1postGoodsItem(item) {
 
         item =
         {
@@ -292,9 +377,8 @@ export default {
             .then(result => console.log(result));
     },
 
-    // 4.2.8
-    // _v__4_2_8__
-    postGoodsItem(item) {
+    // +++ 4.2.8
+    _v__4_2_8__postGoodsItem(item) {
 
         console.log('item');
         console.log(item);
