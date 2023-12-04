@@ -133,6 +133,19 @@
             ></v-textarea>
           </div>
         </v-col>
+
+        <v-col lg="3">
+          <v-btn
+            color="green"
+            x-large
+            block
+            __outlined
+            dark
+            @click="showCompositionObject"
+          >
+            Show Composition Object
+          </v-btn>
+        </v-col>
       </v-row>
 
       <!-- row 4 -->
@@ -509,7 +522,7 @@ export default {
       return this.formatGoods(this.goods);
     },
 
-    // for goods list tst nd
+    // for goods list test end
     releaseForms() {
       //   return this.$store.state.courses;
       return this.$store.state.goods.releaseForms;
@@ -522,6 +535,13 @@ export default {
       //   return this.cleanCompositionTableHtml(this.compositionTableHtmlStr);
       return this.cleanCompositionTableHtml(this.compositionActive);
     },
+    // compositionObject() {
+    //   //   if (this.compositionActive !== "") {
+    //   if (this.compositionTableHtmlCleaned !== "") {
+    //     return this.formatComposition(this.compositionActive);
+    //   }
+    //   return "";
+    // },
   },
 
   methods: {
@@ -550,7 +570,7 @@ export default {
 
       return goodsNew;
     },
-    //
+    // for goods list test end
     generateID() {
       // let id = Math.floor(Math.random() * 10000000)
       return Math.floor(Math.random() * 10000000);
@@ -564,10 +584,11 @@ export default {
       this.item.name = this.titleActive; // + ! name задан как обязательный параметр на сервере
       this.item.brand = this.brandActive;
       this.item.type = this.formatTypeArrayToNumber(this.typeActive);
-      this.item.release_form = this.releaseFormsActive;
+      //   this.item.release_form = this.releaseFormsActive;
+      this.item.release_form = parseInt(this.releaseFormsActive);
       //   this.item.composition = this.compositionActive;
       this.item.composition = this.formatComposition(this.compositionActive);
-      this.item.composition = JSON.stringify(this.item.composition);
+      this.item.composition = JSON.stringify(this.item.composition); // ? нужно или итак будет json
 
       this.$store.dispatch("addGoodsItem", this.item);
     },
@@ -632,6 +653,12 @@ export default {
       //   console.log("tableOuterElID");
       //   console.log(tableOuterElID);
       //   return GoodsServices.createObjectFromTable(tableOuterElID);
+    },
+    showCompositionObject() {
+      let res = this.formatComposition();
+      console.log("showCompositionObject");
+      console.log(res);
+      return;
     },
   },
 };

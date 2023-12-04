@@ -12,6 +12,7 @@ use Yii;
 	// `manufacturer` INT NULL,
 	// `description` TEXT NULL DEFAULT NULL COLLATE 'utf8_general_ci',
 	// `composition` JSON NULL DEFAULT NULL,
+	// `release_form` INT NULL,
 
     
 /**
@@ -54,7 +55,7 @@ class Goods extends \yii\db\ActiveRecord
             
             [['title', 'name', 'description'], 'string', 'max' => 128],
             
-            // [['release_form'], 'integer'],
+            [['release_form'], 'integer'],
             // [['composition'], 'json'], // error 500
             // [['composition'], 'string'], // работает, но сохраняет как строку
             // [['composition'], ''], // error 500

@@ -25,7 +25,7 @@ export default {
     // }    ,
 
     // v default
-    __postGoodsItem(item) {
+    postGoodsItem(item) {
 
         // item =
         // {
@@ -50,7 +50,7 @@ export default {
     },
 
     // test JSON
-    postGoodsItem(item) {
+    __postGoodsItem(item) {
 
         // __item =
         // {
@@ -447,7 +447,7 @@ export default {
         // let compositionArr = [];
         let compositionObj = {};
 
-        const rowStartIndex = 2; // TODO: as input parameter
+        const rowStartIndex = 1; // TODO: as input parameter
         for (let i = rowStartIndex; i < rows.length; i++) {  // i = 1, а не 0, потому что мы пропускам первую строку с th
             const rowEl = rows[i];
 
