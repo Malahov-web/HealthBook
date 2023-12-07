@@ -9,6 +9,7 @@
 
 // 3?. Goods
 
+// 3.1 goods__table
 .goods__table {
 
     tr {
@@ -55,6 +56,7 @@ i {}
 }
 
 
+// 3.2
 .goods-form {}
 
 .goods__form {}
@@ -96,6 +98,7 @@ i {}
     }
 }
 
+// TEMP DEV
 .composition__table {
     width: 100%;
     width: 640px;
@@ -104,3 +107,53 @@ i {}
         border: 1px solid #000;
     }
 }
+
+// 3.3
+.goods__compare {}
+
+// $grid_item_gap: $columns_gap + px;
+$grid_item_gap: 15px;
+// grid
+
+.compare.grid {
+
+    grid-gap: $grid_item_gap;
+    display: grid;
+}
+
+.compare {
+
+    &__cap {}
+
+    &__goods {}
+
+    &__spec-names {}
+
+    &__spec-values {}
+
+
+
+}
+
+// 3. DS + style
+// @media (min-width: get_grid_bp('ds_')+px) {
+// @media (min-width: get_grid_bp('ds_')+px) {
+.compare.grid {
+
+    // grid-template-columns: 50px 150px; // +
+    // grid-template-rows: repeat(3, 1fr);
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr;
+
+    grid-template-areas:
+        "cap            goods"
+        "spec-names     spec-values"
+
+    ;
+}
+
+// }
