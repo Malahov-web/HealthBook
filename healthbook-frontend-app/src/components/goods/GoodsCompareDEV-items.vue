@@ -63,12 +63,14 @@
       <div class="compare__goods">
         <!-- 2 -->
         <v-data-iterator
-          :items="compareItems"
+          :items="items"
+          __:items="compareItems"
           :items-per-page.sync="itemsPerPage"
           :page.sync="page"
           :sort-by="sortBy.toLowerCase()"
           :sort-desc="sortDesc"
           hide-default-footer
+          :group-by="groupBy"
         >
           <template v-slot:default="props">
             <v-row>
@@ -123,10 +125,9 @@
           <!-- v-simple-table -->
           <v-simple-table>
             <tbody>
-              <tr v-for="(key, index) in compareKeys" :key="index">
+              <tr v-for="(key, index) in filteredKeys" :key="index">
                 <td>
-                  <!-- {{ key  }} -->
-                  {{ formatCompositionItemTitle(key) }}
+                  {{ key }}
                 </td>
               </tr>
             </tbody>
@@ -136,13 +137,13 @@
       <!-- 4 -->
       <div class="compare__spec-values">
         <v-data-iterator
-          :items="compareItems"
+          :items="items"
           :items-per-page.sync="itemsPerPage"
           :page.sync="page"
           :sort-by="sortBy.toLowerCase()"
           :sort-desc="sortDesc"
           hide-default-footer
-          __:group-by="groupBy"
+          :group-by="groupBy"
         >
           <template v-slot:default="props">
             <v-row no-gutters>
@@ -181,19 +182,14 @@
                   <!-- <v-simple-table> -->
                   <v-simple-table>
                     <tbody>
-                      <tr v-for="(key, index) in compareKeys" :key="index">
+                      <tr v-for="(key, index) in filteredKeys" :key="index">
                         <td
                           :class="{
                             'green--text font-weight-regular': sortBy === key,
                           }"
                         >
                           <!-- {{ key }} -->
-                          <!-- {{ item[key.toLowerCase()] }} // - -->
-                          <!-- {{ item[key] }} // + -->
-                          <!-- {{
-                            item[key]["value"] // - can't get value, when item[key] is undefined
-                          }} -->
-                          {{ getCompositionItemValue(item, key) }}
+                          {{ item[key.toLowerCase()] }}
                         </td>
                       </tr>
                     </tbody>
@@ -301,23 +297,8 @@ export default {
     //   return this.$store.state.goods.goods;
     // },
 
-    // __goods() {
-    //   // v.1
-    //   //   return this.$store.getters.getProductsCompare;
-    //   // v.2 Сразу обрабатываем названия витаминов в composition
-    //   let goods = this.$store.getters.getProductsCompare;
-    //   return this.fixComposiotionTitles(goods);
-    // },
-
     goods() {
-      let goods = this.$store.getters.getProductsCompare;
-
-      if (goods[0] == undefined) {
-        return goods;
-      } else {
-        return this.fixComposiotionTitles(goods);
-        // return goods; // +
-      }
+      return this.$store.getters.getProductsCompare;
     },
 
     compareKeys() {
@@ -341,7 +322,7 @@ export default {
       this.itemsPerPage = number;
     },
     //v-data-iterator End
-    __dev__collectCompareKeys(goods) {
+    collectCompareKeys(goods) {
       if (!goods[0]) {
         return;
       }
@@ -376,184 +357,15 @@ export default {
       //   return keys;
       return uniqueKeys;
     },
-    collectCompareKeys(goods) {
-      if (!goods[0]) {
-        return;
-      }
 
-      let keys = [];
-      //   debugger; // +
-
-      for (let i = 0; i < goods.length; i++) {
-        let itemCompsArr = Object.keys(goods[i]["composition"]);
-
-        keys = keys.concat(itemCompsArr); // + 38  - оказывается что надо обработаь еще и словарем :-/
-        // debugger;
-      }
-
-      // .. Удаление дублей через Set)
-      let uniqueKeys = [...new Set(keys)];
-
-      //   return keys;
-      return uniqueKeys;
-    },
     collectCompareItems(goods) {
-      if (!goods[0]) {
-        return;
-      }
-
       let compareItems = [];
 
-      goods.forEach((element, index) => {
+      goods.forEach((element) => {
         compareItems.push(element["composition"]);
-        // element.name = goods.
-        compareItems[index]["name"] = element["name"];
       });
 
       return compareItems;
-    },
-
-    getCompositionItemValue(item, key) {
-      // item[key]["value"]
-      let compositionItem = item[key];
-
-      if (!compositionItem) {
-        return;
-      }
-      return compositionItem["value"];
-    },
-
-    formatCompositionItemTitle(title) {
-      // const
-      //         {
-      //   "Витамин D3": "Холекальциферол"
-      // }
-      let newTitle;
-      // 1. Удалить все что в скобках и после скобок
-      let bracketPos = title.indexOf("(");
-      if (bracketPos == -1) {
-        bracketPos = title.length;
-      }
-      newTitle = title.slice(0, bracketPos);
-
-      // 2. Удалить после запятой (кроме букв названий витаминов?? бывает и такое)
-      let commaPos = newTitle.indexOf(",");
-      if (commaPos == -1) {
-        commaPos = newTitle.length;
-      }
-      newTitle = newTitle.slice(0, commaPos);
-
-      // 3. Заменить кирилицу на латиницу в определенных сочетаниях (шифрах витаминов)
-      newTitle = this.replaceAlphabetChars(newTitle);
-
-      return newTitle;
-    },
-    //
-    replaceAlphabetChars(str) {
-      // str  // Витамин В2
-
-      //   const codes = [
-      //     // "А",
-      //     { В1: "B1" },
-      //     { В2: "B2" },
-      //     { В3: "B3" },
-      //     { В4: "B4" },
-      //     { В5: "B5" },
-      //     { В6: "B6" },
-      //     { В7: "B7" },
-      //     { В8: "B8" },
-      //     { В9: "B9" },
-      //     { В10: "B10" },
-      //     { В11: "B11" },
-      //     { В12: "B12" },
-      //     // "С",
-      //     // "Е",
-      //     // "Витамин E", // +
-      //     // "РР",// +
-      //     // "К1" // +
-      //   ];
-
-      const codesObj = {
-        В1: "B1",
-        В2: "B2",
-        В3: "B3",
-        В4: "B4",
-        В5: "B5",
-        В6: "B6",
-        В7: "B7",
-        В8: "B8",
-        В9: "B9",
-        В10: "B10",
-        В11: "B11",
-        В12: "B12",
-      };
-
-      // перебрать codes
-      // для каждого ключа проверить есть ли подстрока в str
-      // если есть - заменить
-
-      //   codes.forEach((element) => {});
-
-      for (const key in codesObj) {
-        // if (Object.hasOwnProperty.call(object, , value)) {
-        //     const element = object[, value];
-        // }
-        const value = codesObj[key];
-
-        if (str.includes(key)) {
-          str = str.replace(key, value);
-        }
-      }
-
-      //   console.log(codes);
-      return str;
-    },
-
-    fixComposiotionTitles(goods) {
-      if (!goods[0]) {
-        return;
-      }
-
-      //   let compareItems = [];
-
-      //   goods.forEach((element, index) => {
-      //     compareItems.push(element["composition"]);
-      //     // element.name = goods.
-      //     compareItems[index]["name"] = element["name"];
-      //   });
-
-      //   return compareItems;
-
-      // перебрали массив , в кадом замениил composition
-      //   goods.forEach((element, index) => {
-      goods.forEach((element) => {
-        //   compareItems.push(element["composition"]);
-        //   // element.name = goods.
-        //   compareItems[index]["name"] = element["name"];
-
-        let compositionObj = element["composition"];
-        // let newCompositionObj = {};
-
-        for (const key in compositionObj) {
-          // if (Object.hasOwnProperty.call(object, key)) {
-          //     const element = object[key];
-          // }
-          // key - is Title
-          //   compositionObj[]
-          let newKey = this.formatCompositionItemTitle(key);
-          compositionObj[newKey] = compositionObj[key];
-          //   key;
-          delete compositionObj[key];
-        }
-
-        // заменили само св-ва composition
-        element["composition"] = compositionObj;
-      });
-      //   debugger;
-
-      //
-
-      return goods;
     },
   },
 };
