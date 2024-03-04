@@ -33,12 +33,14 @@
 <script>
 import CoursesList from "@/components/courses/CoursesList.vue";
 import CoursesGraph from "@/components/courses/CoursesGraph.vue";
+import CoursesAdd from "@/components/courses/CoursesAdd.vue";
 
 export default {
   name: "CoursesTabs",
   components: {
     CoursesList,
     CoursesGraph,
+    CoursesAdd,
   },
 
   props: {
@@ -63,6 +65,11 @@ export default {
       tab: 0,
       //   tab: "CoursesGraph",
       items: [
+        {
+          title: "Add",
+          //   name: "list",
+          tab: "CoursesAdd",
+        },
         {
           title: "Graph",
           //   name: "graph", // name

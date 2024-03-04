@@ -132,6 +132,13 @@ export default {
             state.courses = courses;
         },
 
+        // Add
+
+        ADD_COURSES_ITEM(state, coursesItem) {
+            // state
+            state.courses.push(coursesItem);
+        },
+
     },
     getters: {
         // getCoursesTypes: state => {
@@ -160,6 +167,35 @@ export default {
                 console.log("courses has been fetched:", response); // <--- here
             });
         },
+
+        // Add
+        addCoursesItem({ commit }, goodsItem) {
+
+
+            return CoursesServices.postCoursesItem(goodsItem)
+                .then(() => {
+                    commit("ADD_COURSES_ITEM", goodsItem);
+                    const notification = {
+                        type: "success",
+                        object: "Your post has been successfully added",
+                    };
+                    // dispatch("notifications/add", notification, { root: true });
+                    console.log('Notification: ');
+                    console.log(notification);
+                })
+                .catch((error) => {
+                    const notification = {
+                        type: "error",
+                        object: "Your post was not added, reason: " + error.message,
+                    };
+                    // dispatch("notifications/add", notification, { root: true });
+                    console.log('Notification: ');
+                    console.log(notification);
+                });
+
+        },
+
+
 
     }
 

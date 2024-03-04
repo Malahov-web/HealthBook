@@ -34,7 +34,11 @@ class Courses extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'product_name', 'medicine_name', 'date_finish', 'dosage'], 'required'],
+            // [['title', 'product_name', 'medicine_name', 'date_finish', 'dosage'], 'required'],
+            // Попобуем убрать некоторые компоненты
+            // [['title', 'product_name', 'medicine_name',  'dosage'], 'required'],
+            [['title', 'product_name'], 'required'],
+            //
             [['type_id', 'user_id'], 'integer'],
             [['date_start', 'date_finish'], 'safe'],
             [['dosage_per_tablet'], 'number'],

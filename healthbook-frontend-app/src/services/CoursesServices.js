@@ -74,7 +74,34 @@ export default {
 
     getAlert() {
         alert('getAlert!');
-    }
+    },
+
+
+    // Add
+    // v default
+    postCoursesItem(item) {
+
+        // item =
+        // {
+        //     "title": "Витрум Энерджи таблетки шипучие массой 3,8 г",
+        //     "name": "Vitrum Energy",
+        //     "brand": 2
+        // };
+        // let itemJson = `{"screen": "50 inch", "resolution": "2048 x 1152 pixels", "ports": {"hdmi": 1, "usb": 3}, "speakers": {"left": "10 watt", "right": "10 watt"}}`;
+
+        // let itemJson = item;
+        // let itemJson = JSON.stringify(item)
+
+
+        console.log('item');
+        console.log(item);
+        // console.log('itemJson');
+        // console.log(itemJson);
+
+        return axiosInstance.post('/courses', item)
+        // return axiosInstance.post('/goods', itemJson)
+        // return 1;
+    },
 
 }
 
